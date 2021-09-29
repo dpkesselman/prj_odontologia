@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de piezas dentales</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        {% for pieza_dental in piezas_dentales %}
+            <tr>
+                <td> {{ pieza_dental.nombre }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

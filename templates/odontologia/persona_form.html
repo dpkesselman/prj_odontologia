@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" novalidate="">
+            {% csrf_token %}
+            {% if form.errors %}
+                <!-- Mensaje de error -->
+                <div class="alert-danger">
+                    <p>Hay errores en los datos ingresados. Por favor, corrija los siguientes:</p>
+                    {{ form.non_field_errors }}
+                    <ul>
+                        {% for field in form %}
+                            {%if field.errors %}<li>{{ field.label }}: {{field.errors|striptags }}</li>{% endif %}
+                        {% endfor %}
+                    </ul>
+                    <hr/><br/>
+                </div>
+            {% endif %}
+            <h2>Persona</h2>
+            <div class="col-sm-5 maincontent">
+                <div>
+                    {{ form.nombre.label }} {{ form.nombre }}
+                </div>
+                <br>
+                <div>
+                    {{ form.apellido.label }} {{ form.apellido }}
+                </div>
+                <br>
+                <div>
+                    {{ form.num_doc.label }} {{ form.num_doc }}
+                </div>
+                <br>
+                <div>
+                    {{ form.num_cuit.label }} {{ form.num_cuit }}
+                </div>
+                <br>
+                <div>
+                    {{ form.fecha_nac.label }} {{ form.fecha_nac }}
+                </div>
+                <br>
+                <div>
+                    {{ form.telefono.label }} {{ form.telefono }}
+                </div>
+                <br>
+                <div>
+                    {{ form.email.label }} {{ form.email }}
+                </div>
+                <br>
+                <div>
+                    {{ form.direccion.label }} {{ form.direccion }}
+                </div>
+                <br>
+                <div>
+                    {{ form.localidad.label }} {{ form.localidad }}
+                </div>
+                <br>
+                <input type="submit" name="submit" value="Grabar" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

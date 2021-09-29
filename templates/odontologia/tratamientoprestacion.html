@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tratamiento - Prestación</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Tratamiento</th>
+                <th>Prestación</th>
+            </tr>
+        </thead>
+            {% for tratamiento_prestacion in tratamientos_prestaciones %}
+                <tr>
+                    <td> {{ tratamiento_prestacion.tratamiento }} </td>
+                    <td> {{ tratamiento_prestacion.prestacion }} </td>
+                </tr>
+            {% endfor %}
+    </table>
+</body>
+</html>

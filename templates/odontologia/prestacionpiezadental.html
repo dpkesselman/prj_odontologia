@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prestación - Pieza dental</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Prestación</th>
+                <th>Pieza Dental</th>
+            </tr>
+        </thead>
+            {% for tratamiento_piezadental in tratamientos_piezasdentales %}
+                <tr>
+                    <td> {{ tratamiento_piezadental.prestacion }} </td>
+                    <td> {{ tratamiento_piezadental.pieza_dental }} </td>
+                </tr>
+            {% endfor %}
+    </table>
+</body>
+</html>

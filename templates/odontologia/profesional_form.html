@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" novalidate="">
+            {% csrf_token %}
+            <h2>Profesionales</h2>
+            <div class="col-sm-5 maincontent">
+                <div>
+                    {{ form.profesional.label }} {{ form.profesional }}
+                </div>
+                <br>
+                <div>
+                    {{ form.matricula.label }} {{ form.matricula }}
+                </div>
+                <br>
+                <div>
+                    {{ form.especialidad.label }} {{ form.especialidad }}
+                </div>
+                <br>
+                <input type="submit" name="submit" value="Grabar" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

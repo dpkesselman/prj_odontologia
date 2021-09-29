@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Fichas Médicas</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Establecimiento</th>
+                <th>Paciente</th>
+                <th>Fecha de alta</th>
+                <th>Tipo y factor de sangre</th>
+                <th>Antecedentes</th>
+                <th>Medicación</th>
+                <th>Prestación</th>
+                <th>Historia clínica</th>
+            </tr>
+        </thead>
+        {% for ficha_medica in fichas_medicas %}
+            <tr>
+                <td> {{ ficha_medica.establecimiento }} </td>
+                <td> {{ ficha_medica.paciente }} </td>
+                <td> {{ ficha_medica.fecha_alta }} </td>
+                <td> {{ ficha_medica.tipo_factor }} </td>
+                <td> {{ ficha_medica.antecedentes }} </td>
+                <td> {{ ficha_medica.medicacion }} </td>
+                <td> {{ ficha_medica.prestacion }} </td>
+                <td> {{ ficha_medica.hc }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

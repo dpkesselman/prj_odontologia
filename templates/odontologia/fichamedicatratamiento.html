@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ficha médica - Tratamiento</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Ficha médica</th>
+                <th>Tratamiento</th>
+            </tr>
+        </thead>
+        {% for fichamedica_tratamiento in fichasmedicas_tratamientos %}
+            <tr>
+                <td> {{ fichamedicatratamiento.fichamedica }} </td>
+                <td> {{ fichamedicatratamiento.tratamiento }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

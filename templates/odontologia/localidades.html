@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+   <div id="wrapper" class="toggled">
+        <header id="head" class="secondary"></header>
+            <div class="row">
+                <div class="col-sm-12 maincontent">
+                    <article>
+                        <h3>Listado de localidades</h3>
+                    </article>
+                     <table class="table table-danger table-sm table-bordered border-light">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Localidad</th>
+                                <th>Código postal</th>
+                                <th>MODIFICAR</th>
+                                <th>ELIMINAR</th>
+                            </tr>
+                        </thead>
+                        {% for localidad in localidades %}
+                            <tr>
+                                <td> {{ localidad.nombre }} </td>
+                                <td> {{ localidad.cp }} </td>
+                                <td>
+                                    <a href="{% url 'modificar_localidad' localidad.cp %}">
+                                    <img src="{% static 'img/Editar_25.png' %}"></a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'eliminar_localidad' localidad.cp %}">
+                                    <img src="{% static 'img/Eliminar_25.png' %}"></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                     </table>
+                </div>
+            </div>
+    </div>
+{% endblock %}

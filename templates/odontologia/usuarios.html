@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+    <div id="wrapper" class="toggled">
+        <header id="head" class="secondary"></header>
+            <div class="row">
+                <div class="col-sm-12 maincontent">
+                    <article>
+                        <h3>Listado de usuarios</h3>
+                    </article>
+                     <table class="table table-danger table-sm table-bordered border-light">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>MODIFICAR</th>
+                                <th>ELIMINAR</th>
+                            </tr>
+                        </thead>
+                        {% for usuario in usuarios %}
+                            <tr>
+                                <td> {{ usuario.nombre }} </td>
+                                <td>
+                                    <a href="{% url 'modificar_usuario' usuario.nombre %}">
+                                    <img src="{% static 'img/Editar_25.png' %}"></a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'eliminar_usuario' usuario.nombre %}">
+                                    <img src="{% static 'img/Eliminar_25.png' %}"></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                     </table>
+                </div>
+            </div>
+    </div>
+{% endblock %}

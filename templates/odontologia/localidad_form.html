@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" novalidate="">
+            {% csrf_token %}
+            <h2>Localidad</h2>
+            <div class="col-sm-5 maincontent">
+                <div>
+                    {{ form.nombre.label }} {{ form.nombre }}
+                </div>
+                <br>
+                <div>
+                    {{ form.cp.label }} {{ form.cp }}
+                </div>
+                <br>
+                <input type="submit" name="submit" value="Grabar" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+{% endblock %}

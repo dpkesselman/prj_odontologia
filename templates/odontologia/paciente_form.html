@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" novalidate="">
+            {% csrf_token %}
+            <h2>Paciente</h2>
+            <div class="col-sm-5 maincontent">
+                <div>
+                    {{ form.paciente.label }} {{ form.paciente }}
+                </div>
+                <br>
+                <div>
+                    {{ form.num_hc.label }} {{ form.num_hc }}
+                </div>
+                <br>
+                <div>
+                    {{ form.num_os.label }} {{ form.num_os }}
+                </div>
+                <br>
+                <div>
+                    {{ form.titular.label }} {{ form.titular }}
+                </div>
+                <br>
+                <input type="submit" name="submit" value="Grabar" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

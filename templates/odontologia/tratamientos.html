@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de tratamientos</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Médico efector</th>
+                <th>Prestación</th>
+                <th>Fecha</th>
+                <th>Observaciones</th>
+            </tr>
+        </thead>
+        {% for tratamiento in tratamientos %}
+            <tr>
+                <td> {{ tratamiento.medico_efector }} </td>
+                <td> {{ tratamiento.prestacion }} </td>
+                <td> {{ tratamiento.fecha }} </td>
+                <td> {{ tratamiento.observaciones }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

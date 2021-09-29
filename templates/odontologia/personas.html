@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+    <div id="wrapper" class="toggled">
+        <header id="head" class="secondary"></header>
+            <div class="row">
+                <div class="col-sm-12 maincontent">
+                    <article>
+                        <h3>Listado de personas</h3>
+                    </article>
+                    <table class="table table-danger table-sm table-bordered border-light">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Número de documento</th>
+                                <th>Localidad</th>
+                                <th>MODIFICAR</th>
+                                <th>ELIMINAR</th>
+                            </tr>
+                        </thead>
+                        {% for persona in personas %}
+                            <tr>
+                                <td> {{ persona.nombre }} </td>
+                                <td> {{ persona.apellido }} </td>
+                                <td> {{ persona.num_doc }} </td>
+                                <td> {{ persona.localidad }} </td>
+                                <td>
+                                    <a href="{% url 'modificar_persona' persona.num_doc %}">
+                                    <img src="{% static 'img/Editar_25.png' %}"></a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'eliminar_persona' persona.num_doc %}">
+                                    <img src="{% static 'img/Eliminar_25.png' %}"></a>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+    <div id="wrapper" class="toggled">
+        <header id="head" class="secondary"></header>
+            <div class="row">
+                <div class="col-sm-12 maincontent">
+                    <article>
+                        <h3>Listado de pacientes</h3>
+                    </article>
+                    <table class="table table-danger table-sm table-bordered border-light">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Paciente</th>
+                                <th>Número de historia clínica</th>
+                                <th>Número de Obra Social</th>
+                                <th>Titular</th>
+                                <th>MODIFICAR</th>
+                                <th>ELIMINAR</th>
+                            </tr>
+                        </thead>
+                        {% for paciente in pacientes %}
+                            <tr>
+                                <td> {{ paciente.paciente }} </td>
+                                <td> {{ paciente.num_hc }} </td>
+                                <td> {{ paciente.num_os }} </td>
+                                <td> {{ paciente.titular }} </td>
+                                <td>
+                                    <a href="{% url 'modificar_paciente' paciente.num_hc %}">
+                                    <img src="{% static 'img/Editar_25.png' %}"></a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'eliminar_paciente' paciente.num_hc %}">
+                                    <img src="{% static 'img/Eliminar_25.png' %}"></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendario - Turnos</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Calendario</th>
+                <th>Turnos</th>
+            </tr>
+        </thead>
+            {% for calendario_turno in calendario_turnos %}
+                <tr>
+                    <td> {{ calendario_turno.calendario }} </td>
+                    <td> {{ calendario_turno.turno }} </td>
+                </tr>
+            {% endfor %}
+    </table>
+</body>
+</html>

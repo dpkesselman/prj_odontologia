@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de turnos</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Paciente</th>
+                <th>Médico</th>
+                <th>Turno</th>
+            </tr>
+        </thead>
+        {% for turno in turnos %}
+            <tr>
+                <td> {{ turno.paciente }} </td>
+                <td> {{ turno.medico }} </td>
+                <td> {{ turno.fecha }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

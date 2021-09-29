@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+    <div id="wrapper" class="toggled">
+        <header id="head" class="secondary"></header>
+            <div class="row">
+                <div class="col-sm-12 maincontent">
+                    <article>
+                        <header class="page-header">
+                            <h1>Consultorio odontológico</h1>
+                        </header>
+                        <h3>Listado de profesionales</h3>
+                    </article>
+                    <table class="table table-danger table-sm table-bordered border-light">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Profesional</th>
+                                <th>Matrícula</th>
+                                <th>Especialidad</th>
+                                <th>MODIFICAR</th>
+                                <th>ELIMINAR</th>
+                            </tr>
+                        </thead>
+                        {% for profesional in profesionales %}
+                            <tr>
+                                <td> {{ profesional.profesional }} </td>
+                                <td> {{ profesional.matricula }} </td>
+                                <td> {{ profesional.especialidad }} </td>
+                                <td>
+                                    <a href="{% url 'modificar_profesional' profesional.matricula %}">
+                                    <img src="{% static 'img/Editar_25.png' %}"></a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'eliminar_profesional' profesional.matricula %}">
+                                    <img src="{% static 'img/Eliminar_25.png' %}"></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+    </div>
+{% endblock %}
