@@ -81,7 +81,7 @@ DATABASES = {
         'HOST': 'piperkesito.mysql.pythonanywhere-services.com',
         'NAME': 'piperkesito$odontologia_db',
         'USER': 'piperkesito',
-        'PASSWORD': '********',
+        'PASSWORD': 'p1p3r5174',
         'OPTIONS': {"init_command": "SET foreign_key_checks = 0;",
                     },
     }

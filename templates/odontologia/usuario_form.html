@@ -5,6 +5,9 @@
     <div class="container">
         <form method="post" enctype="multipart/form-data" novalidate="">
             {% csrf_token %}
+            {% if form.errors %}
+                {% include "form_errors.html" %}
+            {% endif %}
             <h2>Persona</h2>
             <div class="col-sm-5 maincontent">
                 <div>
