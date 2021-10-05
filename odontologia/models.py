@@ -22,7 +22,7 @@ class Localidad(models.Model):
 
 
 class Persona(models.Model):
-    num_doc = models.IntegerField("Número de Documento", primary_key=True, unique=True)
+    num_doc = models.IntegerField("Número de Documento", primary_key=True)
     nombre = models.CharField("Nombre/s", max_length=150)
     apellido = models.CharField(max_length=150)
     num_cuit = models.CharField("Número de CUIT/CUIL", max_length=20, null=True, blank=True)
@@ -41,7 +41,7 @@ class Persona(models.Model):
 
 class Usuario(models.Model):
     persona = models.ForeignKey(Persona, on_delete=models.PROTECT, related_name="usuario_persona")
-    nombre = models.CharField("Nombre de usuario", max_length=50, primary_key=True, unique=True)
+    nombre = models.CharField("Nombre de usuario", max_length=50, primary_key=True)
     password = models.CharField("Contraseña", max_length=8)
 
     def __str__(self):
@@ -50,7 +50,7 @@ class Usuario(models.Model):
 
 class Paciente(models.Model):
     paciente = models.ForeignKey(Persona, on_delete=models.PROTECT)
-    num_hc = models.IntegerField("Número de historia clínica", primary_key=True, unique=True)
+    num_hc = models.IntegerField("Número de historia clínica", primary_key=True)
     num_os = models.IntegerField("Número de Obra Social", null=True, blank=True)
     titular = models.BooleanField("¿Titular?")
 
@@ -60,7 +60,7 @@ class Paciente(models.Model):
 
 class Profesional(models.Model):
     profesional = models.ForeignKey(Persona, on_delete=models.PROTECT)
-    matricula = models.IntegerField("Número de matrícula", primary_key=True, unique=True)
+    matricula = models.IntegerField("Número de matrícula", primary_key=True)
     especialidad = models.CharField(max_length=150)
 
     def __str__(self):
@@ -79,7 +79,7 @@ class ObraSocial(models.Model):
 class Turno(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.PROTECT, primary_key=True)
     medico = models.ForeignKey(Profesional, on_delete=models.PROTECT)
-    fecha = models.DateTimeField("Fecha del turno")
+    fecha = models.DateTimeField("Fecha y hora del turno", default=datetime.now)
     estado = models.CharField("Estado", max_length=30)
 
     class Meta:

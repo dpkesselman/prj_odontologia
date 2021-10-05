@@ -33,4 +33,8 @@ urlpatterns = [
     path("tratamientoprestacion", views.tratamientoprestacion_listar, name="tratamientoprestacion"),
     path("calendarioturnos", views.calendarioturnos_listar, name="calendarioturnos"),
     path("prestacionpiezadental", views.prestaciones_listar, name="prestacionpiezadental"),
+    path("turnos", views.turnos_listar, name="turnos"),
+    path("nuevo_turno", views.nuevo_turno, name="nuevo_turno"),
+    path("modificar_turno<str:pk>", views.modificar_turno, name="modificar_turno"),
+    path("eliminar_turno<str:pk>", views.eliminar_turno, name="eliminar_turno"),
 ]

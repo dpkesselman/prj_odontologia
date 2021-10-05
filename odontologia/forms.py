@@ -22,6 +22,10 @@ class DateInput(forms.DateInput):
     input_type = 'date'
 
 
+class DateTimeInput(forms.DateTimeInput):
+    input_type = 'datetime'
+
+
 class LocalidadForm(ModelForm):
     class Meta:
         model = Localidad
@@ -107,7 +111,12 @@ class TurnoForm(ModelForm):
     class Meta:
         model = Turno
         fields = '__all__'
-
+        widgets = {'paciente': forms.Select(attrs={'class': 'form-control input', 'text-transform': 'capitalize'}),
+                   'medico': forms.Select(attrs={'type': 'number', 'class': 'form-control input'}),
+                   'turno': forms.DateTimeInput(format='%Y-%m-%d', attrs={'class': 'form-control input-sm'}),
+                   'estado': forms.TextInput(attrs={'class': 'form-control input',
+                                                    'placeholder': 'Estado del turno'}),
+                   }
 
 class EstablecimientoForm(ModelForm):
     class Meta:

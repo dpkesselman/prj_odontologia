@@ -3,7 +3,7 @@ from .models import Persona, Paciente, Profesional, Localidad, \
     Establecimiento, Usuario, ObraSocial, Turno, PiezaDental, \
     Prestacion, Tratamiento, FichaMedica, FichaMedicaTratamiento,\
     CalendarioTurnos, TratamientoPrestacion, PrestacionPzaDental
-from .forms import PersonaForm, PacienteForm, UsuarioForm, ProfesionalForm, LocalidadForm
+from .forms import PersonaForm, PacienteForm, UsuarioForm, ProfesionalForm, LocalidadForm, TurnoForm
 
 
 def index(request, template_name='odontologia/index.html'):
@@ -106,6 +106,12 @@ def tratamientoprestacion_listar(request, template_name='odontologia/tratamiento
     return render(request, template_name, dato_tratamientoprestacion)
 
 
+def turnos_listar(request, template_name='odontologia/turnos.html'):
+    turnos = Turno.objects.all()
+    dato_turnos = {"turnos": turnos}
+    return render(request, template_name, dato_turnos)
+
+
 def nueva_localidad(request, template_name='odontologia/localidad_form.html'):
     if request.method == 'POST':
         form = LocalidadForm(request.POST)
@@ -162,6 +168,18 @@ def nuevo_profesional(request, template_name='odontologia/profesional_form.html'
             return redirect('profesionales')
     else:
         form = ProfesionalForm()
+    dato = {"form": form}
+    return render(request, template_name, dato)
+
+
+def nuevo_turno(request, template_name='odontologia/turno_form.html'):
+    if request.method == 'POST':
+        form = TurnoForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect('turnos')
+    else:
+        form = TurnoForm()
     dato = {"form": form}
     return render(request, template_name, dato)
 
@@ -226,8 +244,20 @@ def modificar_localidad(request, pk, template_name='odontologia/localidad_form.h
     return render(request, template_name, datos)
 
 
+def modificar_turno(request, pk, template_name='odontologia/turno_form.html'):
+    turno = Turno.objects.get(paciente=pk)
+    form = TurnoForm(request.POST or None, instance=turno)
+    if form.is_valid():
+        form.save(commit=True)
+        return redirect('turnos')
+    else:
+        print(form.errors)
+    datos = {'form': form}
+    return render(request, template_name, datos)
+
+
 def eliminar_persona(request, pk, template_name='odontologia/persona_conf_elim.html'):
-    persona = Persona.objects.get(num_doc=pk)
+    persona = Persona.objects.get(paciente=pk)
     if request.method == 'POST':
         persona.delete()
         return redirect('personas')
@@ -269,3 +299,12 @@ def eliminar_localidad(request, pk, template_name='odontologia/localidad_conf_el
         return redirect('localidades')
     else:
         return render(request, template_name, {'form': localidad})
+
+
+def eliminar_turno(request, pk, template_name='odontologia/turno_conf_elim.html'):
+    turno = Turno.objects.get(num_doc=pk)
+    if request.method == 'POST':
+        turno.delete()
+        return redirect('turnos')
+    else:
+        return render(request, template_name, {'form': turno})

@@ -1,25 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Listado de turnos</title>
-</head>
-<body>
-    <table>
-        <thead>
-            <tr>
-                <th>Paciente</th>
-                <th>Médico</th>
-                <th>Turno</th>
-            </tr>
-        </thead>
-        {% for turno in turnos %}
-            <tr>
-                <td> {{ turno.paciente }} </td>
-                <td> {{ turno.medico }} </td>
-                <td> {{ turno.fecha }} </td>
-            </tr>
-        {% endfor %}
-    </table>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+    <div id="wrapper" class="toggled">
+        <header id="head" class="secondary"></header>
+            <div class="row">
+                <div class="col-sm-12 maincontent">
+                    <article>
+                        <h3>Turnos</h3>
+                    </article>
+                    <table class="table table-danger table-sm table-bordered border-light">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Paciente</th>
+                                <th>Médico</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th>MODIFICAR</th>
+                                <th>ELIMINAR</th>
+                            </tr>
+                        </thead>
+                        {% for turno in turnos %}
+                            <tr>
+                                <td> {{ turno.paciente }} </td>
+                                <td> {{ turno.medico }} </td>
+                                <td> {{ turno.fecha }} </td>
+                                <td> {{ turno.estado }} </td>
+                                <td>
+                                    <a href="{% url 'modificar_turno' turno.paciente %}">
+                                    <img src="{% static 'img/Editar_25.png' %}"></a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'eliminar_turno' turno.paciente %}">
+                                    <img src="{% static 'img/Eliminar_25.png' %}"></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+    </div>
+{% endblock %}
